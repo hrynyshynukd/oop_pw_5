@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Reader {
     private String name;
+    private Library library;
     private List<Book> borrowedBooks;
 
     public Reader(String name) {
@@ -10,20 +11,39 @@ public class Reader {
         this.borrowedBooks = new ArrayList<>();
     }
 
-    public void borrowBook(Book book) {
-        borrowedBooks.add(book);
-        System.out.println(name + " взяв книгу: " + book.getTitle());
+    public void registerToLibrary(Library library) {
+        this.library = library;
     }
 
-    public void returnBook(Book book) {
+    public String getName() {
+        return name;
+    }
+
+    public List<Book> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
+    protected void borrowBook(Book book) {
+        borrowedBooks.add(book);
+    }
+
+    protected void returnBook(Book book) {
         borrowedBooks.remove(book);
-        System.out.println(name + " повернув книгу: " + book.getTitle());
+    }
+
+    public Library getLibrary() {
+        return library;
     }
 
     public void showBorrowedBooks() {
+        if (borrowedBooks.isEmpty()) {
+            System.out.println(name + " не має взятих книг.");
+            return;
+        }
+
         System.out.println("Книги читача " + name + ":");
         for (Book book : borrowedBooks) {
-            System.out.println("- " + book.getTitle());
+            System.out.println(book.getInfo());
         }
     }
 }
