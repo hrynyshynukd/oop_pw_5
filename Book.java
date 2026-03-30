@@ -11,6 +11,18 @@ public class Book {
         this.annotation = annotation;
     }
 
+    public String getInfo() {
+        String info = "Назва: " + title +
+                ", Рік: " + year +
+                ", Автор: " + author.getName();
+
+        if (annotation != null && !annotation.isEmpty()) {
+            info += "\nАнотація: " + annotation;
+        }
+
+        return info;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -25,17 +37,5 @@ public class Book {
 
     public String getAnnotation() {
         return annotation;
-    }
-
-    public String getInfo() {
-        String info = "Назва: " + title +
-                ", Рік видання: " + year +
-                ", Автор: " + author.getName();
-
-        if (annotation != null && !annotation.isEmpty()) {
-            info += "\nАнотація: " + annotation;
-        }
-
-        return info;
     }
 }
