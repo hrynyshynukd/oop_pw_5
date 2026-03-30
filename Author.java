@@ -7,15 +7,11 @@ public class Author {
         this.birthYear = birthYear;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getBirthYear() {
-        return birthYear;
-    }
-
     public String getInfo() {
         return "Ім'я: " + name + ", Рік народження: " + birthYear;
+    }
+
+    public String getName() {
+        return name;
     }
 }
